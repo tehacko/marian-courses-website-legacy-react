@@ -1,0 +1,116 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.pid.lock
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Build outputs
+dist/
+build/
+.cache/
+.next/
+out/
+
+# Temporary files
+*.swp
+*.swo
+*.tmp
+*.temp
+*.tsbuildinfo
+*.idea/
+
+# System files
+.DS_Store
+Thumbs.db
+.vscode/
+.vscode/settings.json
+.vscode/tasks.json
+.vscode/launch.json
+*.iml
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Testing
+coverage/
+*.lcov
+.nyc_output/
+
+# Linting
+.eslintcache
+.stylelintcache
+
+# Package managers
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Storybook
+.storybook/
+storybook-static/
+
+# Firebase
+.firebase/
+firebase-debug.log
+.firebaserc
+
+# Miscellaneous
+*.bak
+*.orig
+*.rej
+
+# React Native
+*.expo
+.expo-shared/
+
+# Sentry
+.sentryclirc
+
+# Git hooks
+.husky/_/
+.husky/*.sh
+
+# MacOS
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+.trash/
+
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# Optional npm cache directory
+.npm/
+
+# Parcel-bundler cache
+.cache/
+
+# Webpack temporary files
+webpack.config.js.*
+
+# TypeScript
+*.d.ts
+
+# Yarn
+.yarn/
+.pnp.*
