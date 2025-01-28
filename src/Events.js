@@ -2,12 +2,12 @@ import HarrietPicture from './assets/Harriet-Gold.png';
 import JanaPicture from './assets/Jana-Prokopova.png';
 import VaclavPicture from './assets/Vaclav-Novak.png';
 
-export const RECENT_EVENTS = [
+export const EVENTS = [
   {
     image: HarrietPicture,
     title: "Básnický workshop s Harriet Gold",
     description:
-      "Objev vnitřního tvůrce s mistriní poetického pera",
+      "Objev vnitřního tvůrce s mistriní poetického pera.",
   },
   {
     image: JanaPicture,

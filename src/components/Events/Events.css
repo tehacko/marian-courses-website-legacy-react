@@ -1,0 +1,26 @@
+#events ul {
+    display: flex;           /* Arrange items in a row */
+    gap: 1rem;               /* Add spacing between items */
+    padding: 0;              /* Remove default padding */
+    list-style: none;        /* Remove bullets */
+    justify-content: center; /* Center the items horizontally */
+  }
+  
+#events li {
+flex: 1 1 30%;           /* Make each item take up 30% of the row */
+max-width: 30%;          /* Prevent items from stretching too far */
+display: flex;           /* Flex layout inside each item */
+flex-direction: column;  /* Stack content vertically */
+align-items: center;     /* Center align text and image */
+text-align: center;      /* Center text alignment */
+background: #f8f8f8;     /* Optional: Add a light background for visibility */
+border: 1px solid #ddd;  /* Optional: Add a border */
+padding: 1rem;           /* Add some spacing inside the item */
+box-sizing: border-box;  /* Ensure padding doesn't affect sizing */
+}
+
+.medallion-image {
+width: 100%;             /* Make the image fill the li item width */
+height: auto;            /* Maintain aspect ratio */
+max-width: 100%;         /* Ensure images stay within bounds */
+}
