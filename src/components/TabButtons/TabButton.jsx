@@ -1,3 +1,5 @@
+import './TabButton.css';
+
 export default function TabButton({ children, onPress }) {
   return (
     <li>

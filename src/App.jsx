@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { EVENTS } from './Events.js';
+import { EVENT_TYPES } from './EventTypes.js'
 import './App.css';
 import Header from './components/Header/Header.jsx';
 import Event from './components/Events/Events.jsx';
 import TabButton from './components/TabButtons/TabButton.jsx';
 import LoginBox from './components/LoginBox/LoginBox.jsx';
 import RegisterBox from './components/RegisterBox/RegisterBox.jsx';
+
 
 export const user = {
   username: '',
@@ -16,9 +18,7 @@ export const user = {
 };
 
 function App() {
-  const [selectedEventType, setSelectedEventType ] = useState('Please click a button');
-
-  const [count, setCount] = useState(0)
+  const [selectedEventType, setSelectedEventType ] = useState('seminar');
 
   function handlePress(pressedButton) {
     // pressedButton = "", "", "", ""
@@ -40,12 +40,12 @@ function App() {
   return (
     <div>
       <Header />  
-      <main>
+      <main id="main">
         <section>
-          <p>Welcome to the Marian Courses Website!</p>
+          <p>Vítejte na portálu kurzů Marie!</p>
         </section>
         <section id="events">
-          <h2>Recent Events</h2>
+          <h2>Brzy proběhne</h2>
           <ul>
             <Event
               title={EVENTS[1].title}
@@ -57,23 +57,21 @@ function App() {
           </ul>
         </section>
         <section id="tab-buttons">
-          <h2>Event Types</h2>
+          <h2>Co nabízíme?</h2>
           <menu>
-            <TabButton onPress={() => handlePress('Seminář')}>Seminář</TabButton>
-            <TabButton onPress={() => handlePress('Webinář')}>Webinář</TabButton>
-            <TabButton onPress={() => handlePress('Video záznam')}>Video záznam</TabButton>
-            <TabButton onPress={() => handlePress('Audio nahrávka')}>Audio nahrávka</TabButton>
+            <TabButton onPress={() => handlePress('seminar')}>Semináře</TabButton>
+            <TabButton onPress={() => handlePress('webinar')}>Webináře</TabButton>
+            <TabButton onPress={() => handlePress('video_zaznam')}>Video záznamy</TabButton>
+            <TabButton onPress={() => handlePress('audio_nahravka')}>Audio nahrávky</TabButton>
           </menu>
-          {selectedEventType}
+          <div id="tab-content">
+            <h3>{EVENT_TYPES[selectedEventType].title}</h3>
+            <p>{EVENT_TYPES[selectedEventType].description}</p>
+            <pre>
+              <code>{EVENT_TYPES[selectedEventType].image}</code>
+            </pre>
+          </div>
         </section>
-        <div className="card">
-          <button onClick={() => setCount((count) => count + 1)}>
-            Líbíme se ti {count}x
-          </button>
-          <p>
-            Kolikrát klikneš, tolikanásobně se ti naše kurzy líbí.
-          </p>
-        </div>
         <LoginBox onLoginPress={() => handleLoginPress()}>Login</LoginBox>
         <RegisterBox onRegisterPress={() => handleRegisterPress()}>Register</RegisterBox>
         <p className="read-the-docs">
