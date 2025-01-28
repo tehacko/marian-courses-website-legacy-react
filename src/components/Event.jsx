@@ -1,4 +1,4 @@
-import './Events.css'
+import './Event.css'
 
 export default function Event({image, title, description}) {
   return (  
