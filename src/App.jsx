@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { EVENTS } from './Events.js';
+import { EVENTS } from './RecentEvents.js';
 import { EVENT_TYPES } from './EventTypes.js'
 import './App.css';
 import Header from './components/Header/Header.jsx';
@@ -18,7 +18,24 @@ export const user = {
 };
 
 function App() {
-  const [selectedEventType, setSelectedEventType ] = useState('seminar');
+  const [selectedEventType, setSelectedEventType ] = useState();
+
+  {/* DEFAULT TAB VALUE ON LOAD - DONE IN 3 DIFFERENT WAYS*/}
+  {/* FIRST ONE - NOW ACTIVE*/}	
+  let eventTypeTabContent = null;
+
+  if (selectedEventType) {
+    eventTypeTabContent = (
+      <div id="tab-content">
+        <h3>{EVENT_TYPES[selectedEventType].title}</h3>
+        <p>{EVENT_TYPES[selectedEventType].description}</p>
+        <pre>
+          <code>{EVENT_TYPES[selectedEventType].image}</code>
+        </pre>
+      </div>
+    )
+  }
+  // THE END OF THE UPPER PART OF THE FIRST ONE - ONE MORE LINE TO GO BELOW
 
   function handlePress(pressedButton) {
     // pressedButton = "", "", "", ""
@@ -47,30 +64,43 @@ function App() {
         <section id="events">
           <h2>Brzy proběhne</h2>
           <ul>
-            <Event
-              title={EVENTS[1].title}
-              description={EVENTS[1].description}
-              image={EVENTS[1].image}
-            />
-            <Event {...EVENTS[2]}/>
-            <Event {...EVENTS[0]}/>
+            {EVENTS.map((eventItem) => <Event key={eventItem.title} {...eventItem} />)}
           </ul>
         </section>
         <section id="tab-buttons">
           <h2>Co nabízíme?</h2>
           <menu>
-            <TabButton onPress={() => handlePress('seminar')}>Semináře</TabButton>
-            <TabButton onPress={() => handlePress('webinar')}>Webináře</TabButton>
-            <TabButton onPress={() => handlePress('video_zaznam')}>Video záznamy</TabButton>
-            <TabButton onPress={() => handlePress('audio_nahravka')}>Audio nahrávky</TabButton>
+            <TabButton isSelected={selectedEventType === 'seminar'} onPress={() => handlePress('seminar')}>Semináře</TabButton>
+            <TabButton isSelected={selectedEventType === 'webinar'}onPress={() => handlePress('webinar')}>Webináře</TabButton>
+            <TabButton isSelected={selectedEventType === 'video_zaznam'}onPress={() => handlePress('video_zaznam')}>Video záznamy</TabButton>
+            <TabButton isSelected={selectedEventType === 'audio_nahravka'}onPress={() => handlePress('audio_nahravka')}>Audio nahrávky</TabButton>
           </menu>
-          <div id="tab-content">
-            <h3>{EVENT_TYPES[selectedEventType].title}</h3>
-            <p>{EVENT_TYPES[selectedEventType].description}</p>
-            <pre>
-              <code>{EVENT_TYPES[selectedEventType].image}</code>
-            </pre>
-          </div>
+          {/* SECOND ONE */}
+            {/* {!selectedEventType ? (
+              null
+            ) : (
+              <div id="tab-content">
+                <h3>{EVENT_TYPES[selectedEventType].title}</h3>
+                <p>{EVENT_TYPES[selectedEventType].description}</p>
+                <pre>
+                  <code>{EVENT_TYPES[selectedEventType].image}</code>
+                </pre>
+              </div>
+            )} */}
+            {/* THIRD ONE */}
+            {/* {!selectedEventType && null}
+            {selectedEventType && (
+               <div id="tab-content">
+                <h3>{EVENT_TYPES[selectedEventType].title}</h3>
+                <p>{EVENT_TYPES[selectedEventType].description}</p>
+                <pre>
+                  <code>{EVENT_TYPES[selectedEventType].image}</code>
+                </pre>
+              </div>
+            )} */}
+            {/* FIRST ONE - REVISITED */}
+            {eventTypeTabContent}
+            {/* THE END OF THE FIRST ONE */}
         </section>
         <LoginBox onLoginPress={() => handleLoginPress()}>Login</LoginBox>
         <RegisterBox onRegisterPress={() => handleRegisterPress()}>Register</RegisterBox>
