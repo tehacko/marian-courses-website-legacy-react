@@ -1,17 +1,41 @@
-import { useState } from 'react'
-import { EVENTS } from './Events.js'
-import './App.css'
-import Header from './components/Header/Header.jsx'
-import Event from './components/Events/Events.jsx'
-import TabButton from './components/TabButtons/TabButton.jsx'
-import LoginBox from './components/LoginBox/LoginBox.jsx'
+import { useState } from 'react';
+import { EVENTS } from './Events.js';
+import './App.css';
+import Header from './components/Header/Header.jsx';
+import Event from './components/Events/Events.jsx';
+import TabButton from './components/TabButtons/TabButton.jsx';
+import LoginBox from './components/LoginBox/LoginBox.jsx';
+import RegisterBox from './components/RegisterBox/RegisterBox.jsx';
+
+export const user = {
+  username: '',
+  email: '',
+  password: '',
+  registered: false,
+  loggedIn: false,
+};
 
 function App() {
+  const [selectedEventType, setSelectedEventType ] = useState('Please click a button');
+
+  const [count, setCount] = useState(0)
+
   function handlePress(pressedButton) {
     // pressedButton = "", "", "", ""
-    console.log(pressedButton)
+    setSelectedEventType(pressedButton)
+    console.log(selectedEventType)
   }
-  const [count, setCount] = useState(0)
+
+  function handleLoginPress() {
+    user.username.value
+    user.loggedIn = true;
+    console.log('Login requested. User is logged in:', user.loggedIn)
+  }
+
+  function handleRegisterPress() {
+    user.registered = true;
+    console.log('Registration requested. Registered:', user.registered)
+  }
 
   return (
     <div>
@@ -40,7 +64,7 @@ function App() {
             <TabButton onPress={() => handlePress('Video záznam')}>Video záznam</TabButton>
             <TabButton onPress={() => handlePress('Audio nahrávka')}>Audio nahrávka</TabButton>
           </menu>
-          Dynamic Content
+          {selectedEventType}
         </section>
         <div className="card">
           <button onClick={() => setCount((count) => count + 1)}>
@@ -50,9 +74,8 @@ function App() {
             Kolikrát klikneš, tolikanásobně se ti naše kurzy líbí.
           </p>
         </div>
-        <LoginBox onLoginPress={() => console.log('Login requested.')}>
-          Login
-        </LoginBox>
+        <LoginBox onLoginPress={() => handleLoginPress()}>Login</LoginBox>
+        <RegisterBox onRegisterPress={() => handleRegisterPress()}>Register</RegisterBox>
         <p className="read-the-docs">
           Copyright © 2025 by Marian Courses
         </p>
