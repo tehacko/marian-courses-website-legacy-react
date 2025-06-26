@@ -1,3 +1,1 @@
-# Marian Courses
-
-This website is brand new and is a joy to build.
+# Older Version of Marian Courses in Vanilla React
